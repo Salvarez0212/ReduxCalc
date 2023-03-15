@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Button } from "./components/Button.components";
+import { Input } from "./components/Input.components";
+import {
+  INCREMENT,
+  DECREMENT,
+  DIVIDE,
+  MULTIPLY,
+} from "./redux/reducers/mathReducer";
 
 function App() {
+  const actions = [INCREMENT, DECREMENT, DIVIDE, MULTIPLY];
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Input />
+      {actions.map((e) => {
+        return (
+          <Button action={e} key={e}>
+            {e}
+          </Button>
+        );
+      })}
     </div>
   );
 }
